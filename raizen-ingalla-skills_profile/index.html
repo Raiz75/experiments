@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IT Resume • Your Name</title>
+  <style>
+    :root{
+      --bg: #0b1020;
+      --panel: #111833;
+      --text: #e8eefc;
+      --muted: #aab6d3;
+      --accent: #5b9dff;
+      --accent-2: #7cf4d4;
+      --chip: #1a2347;
+      --ok: #27c498;
+      --warn: #ffd166;
+      --danger: #ff6b6b;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    [data-theme="light"]{
+      --bg: #f7f9fc;
+      --panel: #ffffff;
+      --text: #0d1b2a;
+      --muted: #4a5876;
+      --accent: #2563eb;
+      --accent-2: #06b6d4;
+      --chip: #eef2ff;
+      --shadow: 0 10px 25px rgba(13,27,42,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text); background: radial-gradient(1200px 600px at 20% -10%, rgba(91,157,255,.15), transparent 60%),
+                radial-gradient(900px 500px at 120% 10%, rgba(124,244,212,.10), transparent 50%), var(--bg);
+      line-height:1.55;
+    }
+    .container{max-width:1100px; margin:40px auto; padding:24px;}
+    header{
+      display:grid; grid-template-columns: 1fr auto; gap:24px; align-items:center; background:var(--panel); border-radius:24px; padding:24px; box-shadow:var(--shadow);
+      position:relative; overflow:hidden;
+    }
+    header:after{
+      content:""; position:absolute; inset:auto -40px -60px auto; width:260px; height:260px; background:conic-gradient(from 180deg, var(--accent), var(--accent-2)); filter: blur(60px); opacity:.15; border-radius:50%;
+    }
+    .id{
+      display:flex; gap:18px; align-items:center;
+    }
+    .avatar{width:84px; height:84px; border-radius:20px; background:linear-gradient(145deg, var(--accent), var(--accent-2)); display:grid; place-items:center; color:white; font-weight:800; box-shadow:var(--shadow)}
+    h1{font-size:28px; margin:0 0 6px}
+    .role{font-weight:600; letter-spacing:.3px; color:var(--muted)}
+    .links{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+    .chip{padding:8px 12px; background:var(--chip); border:1px solid rgba(255,255,255,.06); border-radius:999px; font-size:14px; display:inline-flex; align-items:center; gap:8px}
+    .chip a{color:inherit; text-decoration:none}
+    .right-actions{display:flex; flex-direction:column; gap:10px}
+    .btn{appearance:none; border:0; padding:10px 14px; border-radius:14px; background:linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 70%, black)); color:white; font-weight:700; cursor:pointer; box-shadow:var(--shadow)}
+    .btn.secondary{background:var(--panel); color:var(--text); border:1px solid rgba(255,255,255,.08)}
+    .grid{display:grid; grid-template-columns: 1.2fr .8fr; gap:24px; margin-top:24px}
+    @media (max-width: 900px){.grid{grid-template-columns:1fr}}
+    section.card{background:var(--panel); border-radius:24px; padding:20px; box-shadow:var(--shadow)}
+    section.card h2{margin:0 0 12px; font-size:20px}
+    .skills{display:grid; grid-template-columns: repeat(2,1fr); gap:14px}
+    @media (max-width:700px){.skills{grid-template-columns:1fr}}
+    .skill{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06); border-radius:16px; padding:12px}
+    .skill .top{display:flex; justify-content:space-between; align-items:center; margin-bottom:8px}
+    .bar{height:10px; background:linear-gradient(90deg, var(--accent), var(--accent-2)); border-radius:999px}
+    .bar-wrap{height:10px; background:rgba(255,255,255,.08); border-radius:999px; overflow:hidden}
+
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
+    .tag{font-size:12px; padding:6px 10px; background:var(--chip); border-radius:999px; border:1px solid rgba(255,255,255,.06)}
+
+    .proj-grid{display:grid; grid-template-columns: repeat(2,1fr); gap:14px}
+    @media (max-width:1000px){.proj-grid{grid-template-columns:1fr}}
+    .project{border:1px solid rgba(255,255,255,.06); background:rgba(255,255,255,.03); border-radius:16px; padding:14px; display:flex; flex-direction:column; gap:8px}
+    .project .title{font-weight:700}
+    .project .meta{font-size:13px; color:var(--muted)}
+    .project .badges{display:flex; flex-wrap:wrap; gap:8px}
+
+    .timeline{position:relative; margin-left:6px}
+    .tl-item{display:grid; grid-template-columns: 22px 1fr; gap:12px; margin-bottom:16px}
+    .tl-dot{width:10px; height:10px; border-radius:50%; background:var(--accent); margin-top:6px; box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent)}
+    .tl-content{background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); padding:12px; border-radius:14px}
+    .tl-content .when{font-size:12px; color:var(--muted)}
+    .list{display:grid; gap:8px; padding-left:18px}
+    .list li{margin-bottom:6px}
+
+    .toolbar{display:flex; gap:10px; flex-wrap:wrap; margin:10px 0 18px}
+    .input{flex:1; min-width:220px; display:flex; align-items:center; gap:8px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:10px}
+    .input input{border:0; outline:0; background:transparent; color:var(--text); width:100%}
+    .toggle{
+      display:flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); cursor:pointer; user-select:none
+    }
+
+    /* Print for PDF */
+    @media print{
+      body{background:white}
+      header, section.card{box-shadow:none}
+      .btn, .toolbar{display:none !important}
+      .container{margin:0; padding:0}
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <div class="container">
+    <header>
+      <div class="id">
+        <div class="avatar" aria-hidden="true">IT</div>
+        <div>
+          <h1 id="fullName">Your Name</h1>
+          <div class="role" id="headline">IT Specialist • Full‑Stack Developer • Problem Solver</div>
+          <div class="links">
+            <span class="chip">📫 <a id="emailLink" href="mailto:you@email.com">you@email.com</a></span>
+            <span class="chip">🔗 <a id="githubLink" href="https://github.com/yourhandle" target="_blank">github.com/yourhandle</a></span>
+            <span class="chip">💼 <a id="linkedinLink" href="https://linkedin.com/in/yourhandle" target="_blank">linkedin.com/in/yourhandle</a></span>
+            <span class="chip">📍 <span id="location">City, Country</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="right-actions">
+        <button class="btn" id="printBtn">Download PDF</button>
+        <button class="btn secondary" id="themeBtn">Toggle Theme</button>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Skills</h2>
+        <div class="toolbar">
+          <label class="input" title="Filter skills and projects by keyword">
+            🔍 <input id="search" placeholder="Filter by skill (e.g., React, Linux, SQL)…" />
+          </label>
+          <label class="toggle" id="lvlToggle" title="Switch proficiency view">📊 Level Bars</label>
+        </div>
+        <div class="skills" id="skills"></div>
+        <div class="tags" id="keyTech"></div>
+      </section>
+
+      <section class="card">
+        <h2>Highlights</h2>
+        <ul class="list" id="highlights"></ul>
+        <h2 style="margin-top:18px">Certifications</h2>
+        <ul class="list" id="certs"></ul>
+      </section>
+    </div>
+
+    <section class="card" style="margin-top:24px">
+      <h2>Projects</h2>
+      <div class="proj-grid" id="projects"></div>
+    </section>
+
+    <section class="card" style="margin-top:24px">
+      <h2>Experience</h2>
+      <div class="timeline" id="timeline"></div>
+    </section>
+
+    <section class="card" style="margin-top:24px">
+      <h2>Education</h2>
+      <ul class="list" id="education"></ul>
+    </section>
+  </div>
+
+  <script>
+    // ====== 1) EDIT YOUR DATA HERE (single source of truth) ======
+    const data = {
+      name: "Your Name",
+      headline: "IT Specialist • Full‑Stack Developer • Problem Solver",
+      email: "you@email.com",
+      github: "yourhandle",
+      linkedin: "yourhandle",
+      location: "City, Country",
+      tech: ["JavaScript","TypeScript","HTML","CSS","React","Node.js","Express","Python","Django","PHP","Laravel","MySQL","PostgreSQL","MongoDB","REST","GraphQL","Git","GitHub Actions","Docker","Linux","Nginx","AWS","GCP","Azure","CI/CD","Testing"],
+      skills: [
+        { name:"JavaScript / TypeScript", level: 90, keywords:["frontend","backend","ES6","TS"] },
+        { name:"React", level: 88, keywords:["hooks","vite","spa"] },
+        { name:"Node.js & Express", level: 85, keywords:["api","backend","jwt"] },
+        { name:"Python", level: 82, keywords:["automation","scripts","pandas"] },
+        { name:"Databases (SQL/NoSQL)", level: 80, keywords:["postgres","mysql","mongo"] },
+        { name:"DevOps (Docker, CI/CD)", level: 78, keywords:["docker","pipelines","k8s"] },
+        { name:"Cloud (AWS/GCP/Azure)", level: 70, keywords:["cloud","terraform"] },
+        { name:"Linux & Networking", level: 75, keywords:["bash","nginx","dns"] },
+      ],
+      highlights:[
+        "Built and maintained 10+ full‑stack apps used by 5k+ monthly users.",
+        "Designed CI/CD pipelines that cut deployment time by 60%.",
+        "Improved API response times by 40% via caching and SQL tuning.",
+      ],
+      certifications:[
+        "AWS Certified Cloud Practitioner (2024)",
+        "Cisco CCNA (2023)",
+        "Google Associate Cloud Engineer (in progress)",
+      ],
+      projects:[
+        { title:"PERFIT — Ministry Match & Scheduler", link:"https://github.com/yourhandle/perfit", period:"2025", desc:"ML‑assisted matching and scheduling system; XML/PHP backend, JS frontend, Chart.js analytics.", stack:["JavaScript","PHP","XML","Chart.js"], impact:"Automated matching, saving 12 hrs/week." },
+        { title:"KapeShop — eCommerce Dashboard", link:"https://github.com/yourhandle/kapeShop", period:"2025", desc:"Inventory, transactions, graphs; built with HTML/JS/XML/PHP.", stack:["HTML","CSS","JavaScript","PHP"], impact:"Real‑time insights with top‑seller charts." },
+        { title:"iSulat — Journal Platform", link:"https://github.com/yourhandle/isulat", period:"2024", desc:"Science & history journals; roles for editor, reviewer, author.", stack:["PHP","MySQL","JavaScript"], impact:"Streamlined submissions and peer review." },
+        { title:"Queue Kiosk with QR", link:"https://github.com/yourhandle/queue-kiosk", period:"2024", desc:"Kiosk app with QR code functionality.", stack:["JavaScript","HTML","CSS"], impact:"Reduced wait times by 35%." },
+      ],
+      experience:[
+        { role:"IT Specialist / Full‑Stack Dev", company:"Company Name", when:"2023 — Present", bullets:[
+          "Developed REST APIs and admin dashboards for operations.",
+          "Managed Linux servers, Nginx, SSL, and monitoring.",
+          "Implemented GitHub Actions for tests and deployments.",
+        ], tech:["Node.js","React","Docker","Nginx","Linux"] },
+        { role:"Jr. Developer", company:"Previous Co.", when:"2021 — 2023", bullets:[
+          "Built internal tools to automate manual workflows.",
+          "Maintained legacy PHP apps and migrated to Laravel.",
+          "Wrote unit/integration tests to improve reliability.",
+        ], tech:["PHP","Laravel","MySQL","Python"] },
+      ],
+      education:[
+        "B.S. in Information Technology — Your School (Year)",
+        "Relevant coursework: Data Structures, Networking, DB Systems, OS"
+      ]
+    };
+
+    // ====== 2) RENDER UI ======
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
+
+    function renderHeader(){
+      $('#fullName').textContent = data.name;
+      $('#headline').textContent = data.headline;
+      $('#emailLink').textContent = data.email;
+      $('#emailLink').href = `mailto:${data.email}`;
+      $('#githubLink').href = `https://github.com/${data.github}`;
+      $('#githubLink').textContent = `github.com/${data.github}`;
+      $('#linkedinLink').href = `https://linkedin.com/in/${data.linkedin}`;
+      $('#linkedinLink').textContent = `linkedin.com/in/${data.linkedin}`;
+      $('#location').textContent = data.location;
+
+      const keyTech = document.getElementById('keyTech');
+      keyTech.innerHTML = '';
+      data.tech.slice(0, 18).forEach(t=>{
+        const span = document.createElement('span');
+        span.className = 'tag';
+        span.textContent = t;
+        keyTech.appendChild(span);
+      });
+    }
+
+    function renderSkills(){
+      const wrap = $('#skills');
+      wrap.innerHTML = '';
+      data.skills.forEach(s=>{
+        const el = document.createElement('div');
+        el.className = 'skill';
+        el.dataset.keywords = [s.name, ...(s.keywords||[])].join(' ').toLowerCase();
+        el.innerHTML = `
+          <div class="top"><strong>${s.name}</strong><span>${s.level}%</span></div>
+          <div class="bar-wrap"><div class="bar" style="width:${s.level}%"></div></div>
+        `;
+        wrap.appendChild(el);
+      });
+    }
+
+    function renderHighlights(){
+      const ul = $('#highlights');
+      ul.innerHTML = '';
+      data.highlights.forEach(h=>{
+        const li = document.createElement('li');
+        li.textContent = h; ul.appendChild(li);
+      });
+    }
+
+    function renderCerts(){
+      const ul = $('#certs');
+      ul.innerHTML = '';
+      data.certifications.forEach(c=>{
+        const li = document.createElement('li');
+        li.textContent = c; ul.appendChild(li);
+      });
+    }
+
+    function renderProjects(){
+      const grid = $('#projects');
+      grid.innerHTML = '';
+      data.projects.forEach(p=>{
+        const card = document.createElement('a');
+        card.href = p.link; card.target = '_blank';
+        card.className = 'project';
+        card.dataset.tags = p.stack.join(' ').toLowerCase();
+        card.innerHTML = `
+          <div class="title">${p.title}</div>
+          <div class="meta">${p.period} • ${p.stack.join(' • ')}</div>
+          <div>${p.desc}</div>
+          <div class="badges">${p.stack.map(t=>`<span class='tag'>${t}</span>`).join('')}</div>
+          <div class="meta">Impact: ${p.impact}</div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function renderExperience(){
+      const tl = $('#timeline'); tl.innerHTML = '';
+      data.experience.forEach(x=>{
+        const row = document.createElement('div'); row.className = 'tl-item';
+        row.innerHTML = `
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div style="font-weight:700">${x.role} — ${x.company}</div>
+            <div class="when">${x.when} • ${x.tech.join(', ')}</div>
+            <ul class="list">${x.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>
+          </div>
+        `;
+        tl.appendChild(row);
+      });
+    }
+
+    function renderEducation(){
+      const ul = $('#education'); ul.innerHTML = '';
+      data.education.forEach(e=>{ const li = document.createElement('li'); li.textContent=e; ul.appendChild(li); });
+    }
+
+    // ====== 3) INTERACTIONS ======
+    function setupInteractions(){
+      // Print to PDF
+      $('#printBtn').addEventListener('click', ()=> window.print());
+
+      // Theme toggle (persists)
+      const themeBtn = $('#themeBtn');
+      function setTheme(t){ document.body.setAttribute('data-theme', t); localStorage.setItem('theme', t);} 
+      const saved = localStorage.getItem('theme');
+      if(saved) setTheme(saved);
+      themeBtn.addEventListener('click', ()=>{ const cur = document.body.getAttribute('data-theme'); setTheme(cur === 'dark' ? 'light' : 'dark'); });
+
+      // Filter skills & projects
+      const input = $('#search');
+      input.addEventListener('input', ()=>{
+        const q = input.value.trim().toLowerCase();
+        $$('#skills .skill').forEach(el=>{ el.style.display = el.dataset.keywords.includes(q) ? '' : (q? 'none':'' ); });
+        $$('#projects .project').forEach(el=>{ el.style.display = el.dataset.tags.includes(q) ? '' : (q? 'none':'' ); });
+      });
+
+      // Toggle level bars -> turns into chips (for compact printing if desired)
+      const lvlToggle = $('#lvlToggle');
+      let barsVisible = true;
+      lvlToggle.addEventListener('click', ()=>{
+        barsVisible = !barsVisible;
+        $$('#skills .skill').forEach(el=>{
+          const barWrap = el.querySelector('.bar-wrap');
+          if(barsVisible){ barWrap.style.display='block'; lvlToggle.textContent='📊 Level Bars'; }
+          else { barWrap.style.display='none'; lvlToggle.textContent='🏷️ Compact'; }
+        });
+      });
+
+      // Click email to copy
+      $('#emailLink').addEventListener('click', (e)=>{
+        if(navigator.clipboard){
+          e.preventDefault();
+          navigator.clipboard.writeText(data.email).then(()=>{
+            const orig = e.target.textContent; e.target.textContent = 'Copied!';
+            setTimeout(()=> e.target.textContent = orig, 1000);
+          });
+        }
+      });
+    }
+
+    // ====== 4) INIT ======
+    renderHeader();
+    renderSkills();
+    renderHighlights();
+    renderCerts();
+    renderProjects();
+    renderExperience();
+    renderEducation();
+    setupInteractions();
+  </script>
+</body>
+</html>

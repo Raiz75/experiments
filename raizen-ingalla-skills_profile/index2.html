@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raizen Ingalla Profile</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-size: 12px;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        :root {
+            --main-color: rgb(187, 222, 255);
+            --shadow: 0 5px 25px rgb(204, 201, 201);
+        }
+
+        header {
+            max-width: 1100px;
+            width: 95%;
+            min-height: 170px;
+            margin: 40px auto;
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            background: radial-gradient(
+                1000px 800px at 99% 1%, 
+                var(--main-color), 
+                transparent 50%
+            );
+            padding: 20px;
+        }
+
+        .profile {
+            flex: 0 0 100px;
+            height: 100px;
+            margin: auto 20px auto 0;
+            border-radius: 18px;
+        }
+
+        .profile-info {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            color: grey;
+            font-weight: 600;
+        }
+
+        .profile-link {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            box-sizing: border-box;
+            padding: 5px 0;
+        }
+
+        .profile-link p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 5px 15px;
+            background-color: rgb(238, 238, 248);
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+
+        .profile-link span {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .profile-link img {
+            height: 30px;
+            width: auto;
+        }
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .profile {
+                margin: 0 auto 20px auto;
+            }
+            .profile-info {
+                width: 100%;
+                align-items: center;
+            }
+            .name {
+                font-size: 2rem;
+            }
+            .description {
+                font-size: 1rem;
+            }
+            .profile-link {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .name {
+                font-size: 1.6rem;
+            }
+            .description {
+                font-size: 0.9rem;
+            }
+            .profile-link p {
+                font-size: 0.9rem;
+                padding: 5px 10px;
+            }
+            .profile-link img {
+                height: 24px;
+            }
+        }
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>> skills and highlights */
+        .sec2{
+            border:1px solid red;
+            
+            max-width: 1100px;
+            width: 95%;
+            min-height: 170px;
+            margin: 40px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            
+        }
+        .skillSet{
+            border:1px solid red;
+            width: 60%;
+            min-height: 170px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            background: radial-gradient(
+                500px 300px at 99% 1%, 
+                var(--main-color), 
+                transparent 50%
+            );
+        }
+        .highlights_Certificate{
+            border:1px solid red;
+            width: 37%;
+            min-height: 170px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            background: radial-gradient(
+                500px 300px at 99% 1%, 
+                var(--main-color), 
+                transparent 50%
+            );
+        }
+        
+
+    </style>
+</head>
+<body>
+    <header>
+        <img class="profile" src="img/profile_pic.jpg">
+        <div class="profile-info">
+            <p class="name">Raizen B. Ingalla</p>
+            <p class="description">IT Specialist • Full‑Stack Developer • Problem Solver • gwapo</p>
+            <div class="profile-link">
+                <p><img src="img/icn-email.png"><span>raizeningalla@gmail.com</span></p>
+                <p><img src="img/icn-number.png"><span>09555389828</span></p>
+                <p><img src="img/icn-location.png"><span>Bulacan, Philippines</span></p>
+            </div>
+        </div>
+    </header>
+    <section class="sec2">
+        <div class="skillSet">
+            skill
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <div class="highlights_Certificate">
+            highlights and certificate
+        </highlight>
+    </section>
+    <div>
+        projects
+    </div>
+    <div>
+        experience
+    </div>
+    <section>
+        <div>
+            peronal info
+        </div>
+        <div>
+            educatioinal bg
+        </div>
+    </section>
+</body>
+</html>
